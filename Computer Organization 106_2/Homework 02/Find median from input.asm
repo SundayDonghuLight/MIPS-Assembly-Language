@@ -15,8 +15,8 @@ EOF:
 add  $t1, $zero, $zero     #int j=0
 addi  $t8, $s1, -1
 For1:
-slt  $at, $t1, $t8         #for( ;j<i-1; )
-bne  $at, $zero, L1
+slt  $t5, $t1, $t8         #for( ;j<i-1; )
+bne  $t5, $zero, L1
 j  Sort_End
 L1:
 sll  $t0, $t1, 2
@@ -26,15 +26,15 @@ add  $s3, $t1, $zero       #int M_position=j
 
 addi  $t2, $t1, 1          #int k=j+1
 For2:
-slt  $at, $t2, $s1         #for( ;k<i; )
-bne  $at, $zero, L2
+slt  $t5, $t2, $s1         #for( ;k<i; )
+bne  $t5, $zero, L2
 j  Search_End
 L2:
 sll  $t0, $t2, 2
 add  $t0, $s0, $t0
 lw  $t3, 0($t0)
-slt  $at, $t3, $t2         #if(a[k]<Min)
-beq  $at, $zero, L3
+slt  $t5, $t3, $t2         #if(a[k]<Min)
+beq  $t5, $zero, L3
 add  $s2, $t3, $zero       #Min=a[k]
 add  $s3, $t2, $zero       #M_position=k
 addi  $t2, $t2, 1          #for( ; ;k++)
@@ -53,8 +53,8 @@ j  For1
 Sort_End:
 add  $t1, $zero, $zero     #int j=0
 Print:
-slt  $at, $t1, $s1         #for( ;j<i; )
-bne  $at, $zero, L4
+slt  $t5, $t1, $s1         #for( ;j<i; )
+bne  $t5, $zero, L4
 j  Print_End
 L4:
 sll  $t0, $t1, 2
@@ -67,8 +67,8 @@ j  Print
 Print_End:
 and  $t9, $t9, $zero
 addi  $t9, $t9, 1          #$t9:mask  [00...01]
-and  $at, $s1, $t9         #if(i%2==0)
-bne  $at, $zero, Else
+and  $t5, $s1, $t9         #if(i%2==0)
+bne  $t5, $zero, Else
 srl  $s4, $s1, 1           #int mid=i/2
 sll  $t0, $s4, 2
 add  $t0, $s0, $t0
