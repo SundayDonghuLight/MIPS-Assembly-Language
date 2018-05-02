@@ -46,10 +46,10 @@ Search_End:
 sll  $t0, $t1, 2
 add  $t0, $s0, $t0
 lw  $t3, 0($t0)            #tem=a[j]
-sw  $t2, 0($t0)            #a[j]=Min
+sw  $s2, 0($t0)            #a[j]=Min
 sll  $t0, $s3, 2
 add  $t0, $s0, $t0
-sw  $t3, 0($s0)            #a[M_position]=tem
+sw  $t3, 0($t0)            #a[M_position]=tem
 addi  $t1, $t1, 1          #for( ; ;j++)
 j  For1
 Sort_End:
