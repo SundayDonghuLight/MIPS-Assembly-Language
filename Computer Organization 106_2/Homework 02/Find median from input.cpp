@@ -15,7 +15,7 @@ int main(){
     }
     int j,k;
 
-    //insection sort
+    //insertion sort
     for(j=1;j<i;j++){
         temp = sequence[j];
         k = j-1;
