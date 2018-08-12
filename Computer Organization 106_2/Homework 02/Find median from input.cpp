@@ -3,7 +3,6 @@ using namespace std;
 
 int main(){
     int sequence[100], i=0, temp;
-    unionType input;
 
     //input data
     cout << "enter numbers, EOF to find the median of this sequence" << endl;
