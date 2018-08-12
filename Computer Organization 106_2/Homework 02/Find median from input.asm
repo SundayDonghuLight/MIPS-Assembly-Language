@@ -67,4 +67,6 @@ srl $a0, $t0, 1
 addi  $v0, $zero, 1        #cout<<sequence[mid]
 syscall
 
-End
+End:
+addi  $v0, $zero, 10
+syscall
