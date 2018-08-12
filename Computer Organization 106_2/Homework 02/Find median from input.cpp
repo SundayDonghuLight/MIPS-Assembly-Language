@@ -1,44 +1,43 @@
 #include<iostream>
-#include<stdio.h>
 using namespace std;
 
 int main(){
-    int a[100];
-    char c;
-    int i=0;
-    int tem;
+    int sequence[100], i=0, temp;
+    unionType input;
+
+    //input data
+    cout << "enter numbers, EOF to find the median of this sequence" << endl;
     while(1){
-        scanf("%d%c",&a[i],&c);
-        if(c==EOF||c=='e')
+        cin>>temp;
+        if(cin.eof())
             break;
+        sequence[i] = temp;
         i++;
     }
-    for(int j=0;j<i;j++){
-        int Min=a[j];
-        int M_position=j;
-        for(int k=j+1;k<=i;k++){
-            if(a[k]<Min){
-                Min=a[k];
-                M_position=k;
-            }
+    int j,k;
+
+    //insection sort
+    for(j=1;j<i;j++){
+        temp = sequence[j];
+        k = j-1;
+        while(k >= 0 && temp < sequence[k]){
+            sequence[k+1] = sequence[k];
+            k--;
         }
-        tem = a[j];
-        a[j] = Min;
-        a[M_position] = tem;
+        sequence[k+1] = temp;
+    }
+    cout<<"sorted sequence:";
+    for(j=0;j<i;j++){
+        cout<<sequence[j]<<" ";
     }
 
-    for(int j=0;j<=i;j++){
-        cout<<a[j]<<" ";
-    }
-    if(i%2==0){
-        int mid = i/2;
-        cout<<endl<<a[mid];
+    //find median
+    if(i%2!=0){
+        cout<<endl<<"median = "<<sequence[i/2]<<endl;
     }
     else{
-        int midL = i/2;
-        int midR = midL+1;
-        float median = (float)(a[midL]+a[midR])/2;
-        cout<<endl<<median;
+        cout<<endl<<"median = "<<(sequence[i/2-1]+sequence[i/2])/2<<endl;
     }
+
     return 0;
 }
